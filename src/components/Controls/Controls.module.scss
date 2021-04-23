@@ -1,0 +1,63 @@
+@import '../../Styles/Config.module.scss';
+
+.button {
+  background: $grey;
+  border-radius: 1rem;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  font-size: 1.25rem;
+  margin: 1rem;
+  outline: none;
+  padding: 1rem;
+  position: relative;
+  width: 150px;
+
+  &__spy {
+    background: $red;
+  }
+
+  &__spy:hover ~ .caption_spy {
+    display: block;
+  }
+
+  &__switch {
+    background: $blue;
+  }
+
+  &__switch:hover ~ .caption_switch {
+    display: block;
+  }
+
+  &__confirm {
+    background: $green;
+  }
+
+  &__confirm:hover ~ .caption_confirm {
+    display: block;
+  }
+}
+
+.caption_spy {
+  display: none;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+}
+
+.caption_switch {
+  display: none;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+}
+
+.caption_confirm {
+  display: none;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+}

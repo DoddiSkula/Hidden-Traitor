@@ -1,0 +1,11 @@
+@import './Config.module.scss';
+
+.modal_text {
+  color: $black;
+  margin: 2rem;
+  font-size: 1.5rem;
+}
+
+.modal_button {
+  background: $green;
+}

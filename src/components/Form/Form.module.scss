@@ -1,0 +1,35 @@
+@import '../../Styles/Config.module.scss';
+
+.form {
+  border-radius: 20px;
+
+  &__input_group {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    margin-bottom: 1.5rem;
+  }
+
+  &__input {
+    height: 25px;
+    width: 250px;
+    border: none;
+    border-bottom: 1px solid $white;
+    background: none;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI',
+      'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+      'Helvetica Neue', sans-serif;
+  }
+
+  &__input:focus {
+    border-bottom: 2px solid $white;
+    outline: none;
+  }
+
+  &__label {
+    color: $white;
+    margin-bottom: 0.75rem;
+  }
+}

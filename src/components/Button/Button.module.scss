@@ -1,0 +1,17 @@
+@import '../../Styles/Config.module.scss';
+
+.button {
+  align-items: center;
+  display: flex;
+  font-size: 1.25rem;
+  height: 50px;
+  justify-content: center;
+  text-align: center;
+  width: 250px;
+}
+
+.NavLink {
+  color: $white;
+  font-size: 2rem;
+  text-decoration: none;
+}
