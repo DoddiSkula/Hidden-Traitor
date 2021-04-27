@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import openSocket from 'socket.io-client';
 import s from './Controls.module.scss';
 

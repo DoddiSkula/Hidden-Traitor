@@ -13,6 +13,7 @@ export function Game() {
   const [start, setStart] = useState(false);
   const [isModalOpen, toggleModal] = useState(false);
   const [modalText, setModalText] = useState("");
+  const [action, setAction] = useState("");
 
   const urlParams = new URLSearchParams(window.location.search);
   const name = urlParams.get('name');
@@ -26,6 +27,9 @@ export function Game() {
 
     // get room and users
     socket.on('room-info', (data) => {
+      if(data.users.length < 2) {
+        setStart(false);
+      }
       setInfo(data);
     });
 
@@ -34,23 +38,40 @@ export function Game() {
       setId(socket.id);
     });
 
+    // game starting
+    socket.on('starting-game', (data) => {
+      setMessages([]);
+      setInfo(data);
+      setStart(true);
+    });
+
     // message from server
     socket.on('message', (data) => {
       setMessages(msg => [...msg, data]);
     });
 
-    // game starting
-    socket.on('starting-game', (data) => {
-      setStart(true);
+    // action response - all players
+    socket.on('action-response', (data) => {
       setInfo(data);
     });
 
-    // confirm action response
-    socket.on('action-confirm-response', (data) => {
-      setInfo(data);
-    });
+    // CONFIRM action response - player
     socket.on('message-confirm', (msg) => {
+      setAction("");
       setModalText(msg);
+      toggleModal(true);
+    });
+
+    // SPY action selected response - player
+    socket.on('message-spy', () => {
+      setAction("spy");
+    });
+
+    
+    // SPY action response - player
+    socket.on('message-spy-on-player', (player) => {
+      setAction("");
+      setModalText(`${player.name} is ${player.role}`);
       toggleModal(true);
     });
 
@@ -59,7 +80,7 @@ export function Game() {
 
   return (
     <div>
-      <GameRoom key={id} messages={messages} info={info} id={id} start={start} playerTurn={info.playerTurn} />
+      <GameRoom key={id} messages={messages} info={info} id={id} start={start} playerTurn={info.playerTurn} turn={info.turn} action={action} />
       <Modal isOpen={isModalOpen} toggle={toggleModal}>
         <p className={s.modal_text}>{modalText}</p>
         <button className={s.modal_button} onClick={() => toggleModal(false)}>Confirm</button>

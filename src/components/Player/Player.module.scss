@@ -5,6 +5,8 @@
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
+  width: 250px;
+  overflow: hidden;
 
   &__avatar {
     width: 50px;
@@ -17,6 +19,6 @@
 
   &__name {
     font-size: 1.25rem;
-    margin-bottom: 0.5rem;
   }
 }
+
