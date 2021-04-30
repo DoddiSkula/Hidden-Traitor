@@ -112,11 +112,13 @@
 .logs::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba($black, 0.8);
   border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba($black, 0.8);
 }
 
 .logs::-webkit-scrollbar-thumb {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba($black, 0.8);
+  box-shadow: inset 0 0 6px rgba($black, 0.8);
 }
 
 .bold {

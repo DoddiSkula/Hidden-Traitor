@@ -1,12 +1,15 @@
 import openSocket from 'socket.io-client';
+import dotenv from 'dotenv';
 import s from './Action.module.scss';
 
-const SERVER_URL = 'http://localhost:4000';
+dotenv.config();
+
+const { REACT_APP_SERVER_URL: serverUrl } = process.env;
 
 export function Action({ users, id, action }) {
 
     function handleSpyPlayer(user){
-        const socket = openSocket(SERVER_URL);
+        const socket = openSocket(serverUrl);
         socket.emit('action-spy-on-player', { id, user});
         return () => socket.disconnect();
     }

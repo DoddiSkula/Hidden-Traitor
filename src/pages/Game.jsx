@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import openSocket from 'socket.io-client';
+import dotenv from 'dotenv';
 import { GameRoom } from '../components/GameRoom/GameRoom';
 import Modal from "../components/Modal/Modal";
-import s from "../Styles/Game.module.scss";
+import s from "../styles/Game.module.scss";
 
-const SERVER_URL = 'http://localhost:4000';
+dotenv.config();
+
+const { REACT_APP_SERVER_URL: serverUrl } = process.env;
+
 
 export function Game() {
   const [messages, setMessages] = useState([]);
@@ -20,7 +24,7 @@ export function Game() {
   const room = urlParams.get('room');
 
   useEffect(() => {
-    const socket = openSocket(SERVER_URL);
+    const socket = openSocket(serverUrl);
 
     // join room
     socket.emit('join', { name, room })

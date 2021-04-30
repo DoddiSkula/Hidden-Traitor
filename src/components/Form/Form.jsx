@@ -2,7 +2,6 @@ import { Button } from "../Button/Button";
 import s from './Form.module.scss';
 
 export function Form({ buttonText, buttonColor }) {
-    // const SERVER_URL = 'http://localhost:4000';
 
     return (
         <form className={s.form} autocomplete="off" action='/room'>

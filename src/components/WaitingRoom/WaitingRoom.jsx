@@ -1,13 +1,16 @@
 import openSocket from 'socket.io-client';
+import dotenv from 'dotenv';
 import { Player } from '../Player/Player';
 import { Layout } from '../layout/Layout';
 
-const SERVER_URL = 'http://localhost:4000';
+dotenv.config();
+
+const { REACT_APP_SERVER_URL: serverUrl } = process.env;
 
 export function WaitingRoom({ player, host, users }) {
     
     function handleStart(e) {
-        const socket = openSocket(SERVER_URL);
+        const socket = openSocket(serverUrl);
         e.preventDefault();
         if (player) {
             socket.emit('start-game', player);
