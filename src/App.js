@@ -5,7 +5,7 @@ import { JoinGame } from './pages/JoinGame';
 import { Game } from './pages/Game';
 
 function App() {
-
+   
   return (
       <Switch>
         <Route exact path='/' component={Index}/>

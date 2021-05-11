@@ -42,14 +42,14 @@ export function Game() {
       setId(socket.id);
     });
 
-    // game starting
+    // game starting - all players
     socket.on('starting-game', (data) => {
       setMessages([]);
       setInfo(data);
       setStart(true);
     });
 
-    // message from server
+    // message from server - all players
     socket.on('message', (data) => {
       setMessages(msg => [...msg, data]);
     });
@@ -70,12 +70,24 @@ export function Game() {
     socket.on('message-spy', () => {
       setAction("spy");
     });
-
     
     // SPY action response - player
     socket.on('message-spy-on-player', (player) => {
       setAction("");
-      setModalText(`${player.name} is ${player.role}`);
+      const role = player.newRole ? player.newRole : player.role;
+      setModalText(`${player.name} is ${role}.`);
+      toggleModal(true);
+    });
+
+    // SWITCH action selected response - player
+    socket.on('message-switch', () => {
+      setAction("switch");
+    });
+
+    // SWITCH action response - player
+    socket.on('message-switch-roles', (selectedPlayers) => {
+      setAction("");
+      setModalText(`You swapped the roles of ${selectedPlayers[0].name} and ${selectedPlayers[1].name}.`);
       toggleModal(true);
     });
 

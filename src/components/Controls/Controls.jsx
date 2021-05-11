@@ -34,10 +34,10 @@ export function Controls({ player }) {
     return (
         <div>
             <button onClick={handleSpy} className={s.button__spy}>Spy</button>
-            <button onClick={handleSwitch} className={s.button__switch}>Switch</button>
+            <button onClick={handleSwitch} className={s.button__switch}>Swap</button>
             <button onClick={handleConfirm} className={s.button__confirm}>Confirm</button>
-            <p className={s.caption_spy}>Look at another players role.</p>
-            <p className={s.caption_switch}>Make two players switch roles.</p>
+            <p className={s.caption_spy}>Look at another player's role.</p>
+            <p className={s.caption_switch}>Make two players swap roles.</p>
             <p className={s.caption_confirm}>Look at your own role (it might have changed!).</p>
         </div>
     );

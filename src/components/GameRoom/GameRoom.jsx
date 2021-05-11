@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Player } from '../Player/Player';
 import { Controls } from '../Controls/Controls';
 import { WaitingRoom } from '../WaitingRoom/WaitingRoom';
@@ -7,7 +8,6 @@ import s from './GameRoom.module.scss';
 
 export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, action }) {
     const messagesEndRef = useRef(null);
-
     const users = info.users || [];
     const room = info.room;
     const host = info.host || null;
@@ -16,10 +16,11 @@ export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, 
     const scrollToBottom = () => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
     }
-  
+
     useEffect(() => {
       scrollToBottom();
     }, [messages]);
+
 
     if(!start) {
         return (
@@ -34,7 +35,7 @@ export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, 
                 {/* Header */}
                 <div className={s.header}>
                 <h2>Game code: {room}</h2>
-                    <a href={"/"} title={"Leave Game"}><div className={s.header__leave}/></a>
+                    <Link to={"/"} title={"Leave Game"}><div className={s.header__leave}/></Link>
                 </div>
     
                 <div className={s.gameRoom}>
@@ -46,7 +47,7 @@ export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, 
                                 if(user.id === id) {
                                 return null;
                                 }
-                                return (<div className={s.gameRoom__player}><Player key={user.id} player={user} /></div>)
+                                return (<div key={user.id} className={s.gameRoom__player}><Player key={user.id} player={user} /></div>)
                             })}
                         </div>
                     </div>
@@ -54,11 +55,11 @@ export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, 
                     {/* Board */}
                     <div className={s.gameRoom__section_middle}>
                         {(() => { 
-                            if(action === "spy") return (
+                            if(action !== "") return (
                                 <Action users={players} id={id} action={action} />
                             );
                             if(players[playerTurn].id === player.id) { 
-                                return <h1>It's your turn, choose action to play.</h1>
+                                return <h1>It's your turn, choose an action to play.</h1>
                             } else {
                                 return <h1>Waiting for {players[playerTurn].name} to play.</h1> 
                             }})()}
@@ -70,7 +71,7 @@ export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, 
                         <div className={s.logs}>
                             {messages.map((msg, i) => {
                                 return (
-                                <div>
+                                <div key={i}>
                                     <p key={i}>{msg}</p>
                                     <div ref={messagesEndRef} />
                                 </ div>
