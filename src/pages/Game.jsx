@@ -9,7 +9,6 @@ dotenv.config();
 
 const { REACT_APP_SERVER_URL: serverUrl } = process.env;
 
-
 export function Game() {
   const [messages, setMessages] = useState([]);
   const [info, setInfo] = useState({});

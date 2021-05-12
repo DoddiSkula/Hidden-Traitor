@@ -5,7 +5,7 @@ import { Layout } from '../components/layout/Layout';
 export function CreateGame() {
     return (
         <Layout>
-            <Form buttonText={'Create'} buttonColor={'#F2941C'}/>
+            <Form buttonText={'Create'} buttonColor={'#f0b448'}/>
             <Button link={'/'} text={'Back'} />
         </Layout>
     );

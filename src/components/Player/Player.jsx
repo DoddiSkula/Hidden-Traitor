@@ -1,5 +1,5 @@
 import s from './Player.module.scss';
-import Avatar from '../../images/agent.png';
+import Avatar from '../../images/agent001.svg';
 
 export function Player({ player, color = "#fbfbfb" }) {
     return player ? (

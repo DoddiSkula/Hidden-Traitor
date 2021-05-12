@@ -6,8 +6,8 @@ export function Index() {
     return (
         <div>
             <Layout>
-                <Button link={'/join'} text={'Join game'}  color={'#2cc242'}/>
-                <Button link={'/create'} text={'Create game'} color={'#F2941C'}/>
+                <Button link={'/join'} text={'Join game'}  color={'#61ca70'}/>
+                <Button link={'/create'} text={'Create game'} color={'#f0b448'}/>
             </Layout>
         </div>
     );

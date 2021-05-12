@@ -1,12 +1,7 @@
 @import '../../Styles/Config.module.scss';
 
 .background {
-  background: rgb(69, 69, 69);
-  background: radial-gradient(
-    circle,
-    rgba(69, 69, 69, 1) 0%,
-    rgba(37, 37, 37, 1) 100%
-  );
+  background: $darker-grey;
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
