@@ -17,3 +17,6 @@ At the start of a game one player is randomly assigned the traitor role while th
 - Confirm: look at your own role (it might have changed).
 
 At the end of turn 3 a voting starts where players vote on who they think the traitor is. If the traitor is the most voted player then the agents win, otherwise the traitor wins.
+
+
+![alt text](https://github.com/DoddiSkula/hidden-traitor/blob/main/src/images/agents.png "Hidden Traitor Agents")
