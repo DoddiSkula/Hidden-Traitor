@@ -1,11 +1,9 @@
 @import '../../Styles/Config.module.scss';
 
 .player {
-  background-color: rgba($white, 0);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  width: 250px;
   overflow: hidden;
 
   &__avatar {
@@ -13,10 +11,34 @@
     height: 50px;
     border-radius: 50%;
     margin-right: 1rem;
+    background-color: rgba($white, 0.25);
+    border: 2px solid $grey;
   }
 
   &__name {
     font-size: 1.25rem;
+  }
+}
+
+.playerLobby {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  &__avatar {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: rgba($white, 0.25);
+    border: 2px solid $grey;
+  }
+
+  &__name {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
   }
 }
 

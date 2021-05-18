@@ -2,6 +2,8 @@ import openSocket from 'socket.io-client';
 import dotenv from 'dotenv';
 import { Player } from '../Player/Player';
 import { Layout } from '../layout/Layout';
+import { ExitButton } from '../ExitButton/ExitButton';
+import s from './WaitingRoom.module.scss';
 
 dotenv.config();
 
@@ -20,23 +22,30 @@ export function WaitingRoom({ player, host, users }) {
 
     return (
         <Layout>
-        {player ? <h1>Game Code: {host.room}</h1> : <p>Error, please restart the game! 😲</p>}
-        {(() => {
-            if(player) {
-                <h1>Game Code: {host.room}</h1>
-                if(player.id === host.id && users.length > 1) {
-                    return <button onClick={handleStart}>Start Game</button>
-                } else {
-                    return player.id !== host.id ? <p>Waiting for {host.name} to start the game.</p> : <p>Waiting for more players.</p>
-                }
-            }
-        })()}
-        <h2>Players</h2>
-        <div>
-            {users.map((user) => {
-                return <Player key={user.id} player={user} />
-            })}
-        </div>
-    </Layout>
+            <div className={s.exit}>
+                <ExitButton/>
+            </div>
+            {player ? <h1>Game Code: {host.room}</h1> : <p>Error, please restart the game! 😲</p>}
+            <h2>Players ({users.length}/6)</h2>
+            <div className={s.players}>
+                {users.map((user) => {
+                    return (
+                        <Player key={user.id} player={user} vertical={true} />
+                    ) 
+                })}
+            </div>
+            <div>
+                {(() => {
+                    if(player) {
+                        <h1>Game Code: {host.room}</h1>
+                        if(player.id === host.id && users.length > 1) {
+                            return <button onClick={handleStart}>Start Game</button>
+                        } else {
+                            return player.id !== host.id ? <p>Waiting for {host.name} to start the game.</p> : <p>Waiting for more players.</p>
+                        }
+                    }
+                })()}
+            </div>
+        </Layout>
     );
 }

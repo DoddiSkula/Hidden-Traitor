@@ -3,10 +3,8 @@ import s from './Layout.module.scss';
 export function Layout({ children }) {
   return (
     <div>
-      <header className={s.layout__header}>
-        <h1>HIDDEN TRAITOR</h1>
-      </header>
       <div className={s.layout}>
+        <h1 className={s.layout__header}>HIDDEN TRAITOR</h1>
         {children}
       </div>
       <footer className={s.layout__footer}>

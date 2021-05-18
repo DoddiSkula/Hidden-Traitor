@@ -1,12 +1,15 @@
-import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState, useRef } from 'react';
 import { Player } from '../Player/Player';
 import { Controls } from '../Controls/Controls';
 import { WaitingRoom } from '../WaitingRoom/WaitingRoom';
 import { Action } from '../Action/Action';
+import { GameRules } from '../GameRules/GameRules';
+import { ExitButton } from '../ExitButton/ExitButton';
+import Modal from "../Modal/Modal";
 import s from './GameRoom.module.scss';
 
 export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, action }) {
+    const [isModalOpen, toggleModal] = useState(false);
     const messagesEndRef = useRef(null);
     const users = info.users || [];
     const room = info.room;
@@ -34,8 +37,11 @@ export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, 
             <div className={s.background}>
                 {/* Header */}
                 <div className={s.header}>
-                <h2>Game code: {room}</h2>
-                    <Link to={"/"} title={"Leave Game"}><div className={s.header__leave}/></Link>
+                    <h2>Game code: {room}</h2>
+                    <div className={s.header__right}>
+                        <button onClick={() => toggleModal(true)} className={s.header__gameRules}>Game Rules</button>
+                        <ExitButton/>
+                    </div>
                 </div>
     
                 <div className={s.gameRoom}>
@@ -101,6 +107,10 @@ export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, 
                         <p>Player turn: <span className={s.bold}>{users[playerTurn].name}</span></p>
                     </div>
                 </div>
+                <Modal isOpen={isModalOpen} toggle={toggleModal}>
+                    <GameRules/>
+                    <button className={s.modal_button} onClick={() => toggleModal(false)}>Confirm</button>
+                </Modal>
             </div>
         );
     }

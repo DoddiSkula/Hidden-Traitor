@@ -1,5 +1,14 @@
 @import './Config.module.scss';
 
+.modal {
+  overflow: auto;
+}
+
+.modal_header {
+  color: $black;
+  text-align: center;
+}
+
 .modal_text {
   color: $black;
   margin: 2rem;
@@ -8,4 +17,25 @@
 
 .modal_button {
   background: $green;
+}
+
+.gameRules {
+  width: 250px;
+  height: 50px;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.red {
+  color: $red;
+}
+
+.blue {
+  color: $blue;
+}
+
+.green {
+  color: $green;
 }

@@ -1,0 +1,12 @@
+@import '../../Styles/Config.module.scss';
+
+.exit {
+  background-image: url('../../images/exit.svg');
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: rgba($white, 0.15);
+}
+
+.exit:hover {
+  background-color: rgba($white, 0.5);
+}
