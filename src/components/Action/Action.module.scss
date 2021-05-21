@@ -4,40 +4,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   margin-top: 2rem;
   overflow: auto;
 
   &__selection {
-    margin-right: 2rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   &__name {
     width: 100px;
     overflow: hidden;
   }
-
-  @media (max-width: 1430px) {
-    flex-direction: column;
-    height: 400px;
-    padding-top: 1rem;
-    padding-bottom: 2rem;
-
-    &__selection {
-      margin-right: 0rem;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
-  }
 }
 
 .btn {
   border-radius: 0.5rem;
   font-size: 1rem;
-  width: 100px;
-  height: 40px;
+  width: 80px;
+  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;

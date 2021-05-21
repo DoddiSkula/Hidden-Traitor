@@ -15,6 +15,7 @@ export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, 
     const room = info.room;
     const host = info.host || null;
     const player = users.find((user) => id === user.id);
+    const index =  users.indexOf(player);
 
     const scrollToBottom = () => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -49,18 +50,27 @@ export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, 
                     <div className={s.gameRoom__section}>
                         <h2>Players</h2>
                         <div>
-                            {players.map((user) => {
+                            {players.map((user, i) => {
                                 if(user.id === id) {
                                 return null;
                                 }
-                                return (<div key={user.id} className={s.gameRoom__player}><Player key={user.id} player={user} /></div>)
+                                return (<div key={user.id} className={s.gameRoom__player}><Player key={user.id} player={user} agent={i} /></div>)
                             })}
                         </div>
                     </div>
     
                     {/* Board */}
                     <div className={s.gameRoom__section_middle}>
-                        {(() => { 
+                        {(() => {
+                            if(action === "hasVoted") {
+                                return <h1>Waiting for other players to vote.</h1>
+                            } 
+                            if(turn >= 2) {
+                                return (
+                                    <Action users={players} id={id} action={"vote"} />
+                                );
+                            }
+
                             if(action !== "") return (
                                 <Action users={players} id={id} action={action} />
                             );
@@ -91,12 +101,12 @@ export function GameRoom({ messages, info, id, start, playerTurn = 0, turn = 1, 
                 <div className={s.footer}>
                     <div className={s.footer__section}>
                         <h2>You</h2>
-                        <Player key={player.id} player={player} color={player.role === 'Agent' ? "#55b0d3" : "#e36e5a"} />
+                        <Player key={player.id} player={player} color={player.role === 'Agent' ? "#55b0d3" : "#e36e5a"} agent={index} />
                         <h3>Your role: <span className={`${s.bold} ${player.role === 'Agent' ? s.agent : s.traitor}`}>{player.role}</span></h3>
                     </div>
                     <div className={s.footer__section_middle}>
                         {(() => {
-                            if(players[playerTurn].id === player.id) {
+                            if(player && turn < 2 && players[playerTurn].id === player.id && action !== "vote") {
                                 return <Controls player={player}/>
                             }
                         })()}

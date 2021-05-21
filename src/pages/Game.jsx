@@ -90,6 +90,26 @@ export function Game() {
       toggleModal(true);
     });
 
+    // VOTE action response - player
+    socket.on('action-player-voted', (player) => {
+      setAction("hasVoted");
+    });
+
+    // Game end - all players
+    socket.on('game-end', (data) => {
+      setAction("");
+      setMessages([]);
+
+      if(data.traitor.id === data.mostVotedPlayer.id) {
+        setModalText(`The agents win! The traitor was ${data.traitor.name}.`);
+      } else {
+        setModalText(`The traitor wins! ${data.mostVotedPlayer.name} was not the traitor,  ${data.traitor.name} was the traitor!`);
+      }
+
+      toggleModal(true);
+      setStart(false);
+    });
+
     return () => socket.disconnect();
   }, [name, room]);
 

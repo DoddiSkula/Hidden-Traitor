@@ -33,7 +33,7 @@ export function Controls({ player }) {
 
     return (
         <div>
-            <button onClick={handleSpy} className={s.button__spy}>Spy</button>
+            <button onClick={handleSpy} className={`${s.button} ${s.button__spy}`}>Spy</button>
             <button onClick={handleSwitch} className={s.button__switch}>Swap</button>
             <button onClick={handleConfirm} className={s.button__confirm}>Confirm</button>
             <p className={s.caption_spy}>Look at another player's role.</p>

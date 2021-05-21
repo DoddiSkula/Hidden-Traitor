@@ -1,20 +1,28 @@
 @import '../../Styles/Config.module.scss';
 
 .exit {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
 }
 
 .players {
-    align-items: center;
-    background-color: rgba($black, 0.7);
-    border-radius: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 1rem;
-    overflow: auto;
-    padding-top: 2rem;
-    padding: 1rem;
+  align-items: center;
+  background-color: rgba($black, 0.7);
+  border-radius: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+  overflow: auto;
+  padding-top: 2rem;
+  padding: 1rem;
+}
+
+.code {
+  background-color: rgba($green, 0.75);
+  margin-left: 0.5rem;
+  border-radius: 1rem;
+  font-weight: 400;
+  padding: 0.5rem;
 }

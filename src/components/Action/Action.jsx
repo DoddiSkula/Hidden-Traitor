@@ -1,5 +1,6 @@
 import openSocket from 'socket.io-client';
 import dotenv from 'dotenv';
+import { Player } from '../Player/Player';
 import s from './Action.module.scss';
 
 dotenv.config();
@@ -42,6 +43,12 @@ export function Action({ users, id, action }) {
         }
     }
 
+    function handleVote(user) {
+        const socket = openSocket(serverUrl);
+        socket.emit('action-vote', { id, user});
+        return () => socket.disconnect();
+    }
+
     if (!action) return <p>OOPS! something went wrong, please restart the game.</p>
 
     if(action === "spy") {
@@ -49,13 +56,13 @@ export function Action({ users, id, action }) {
             <div>
                 <h1>Choose a player to spy on.</h1>
                 <div className={s.list}>
-                    {users.map((user) => {
+                    {users.map((user, i) => {
                         if(user.id === id) {
                         return null;
                         }
                         return (
                             <div key={user.id} className={s.list__selection}>
-                                <p className={s.list__name}>{user.name}</p>
+                                <Player key={user.id} player={user} agent={i} vertical={true}/>
                                 <button className={`${s.btn} ${s.red}`} onClick={() => handleSpyPlayer(user)}>Spy</button>
                             </div>
                         ); 
@@ -71,18 +78,11 @@ export function Action({ users, id, action }) {
                 <h1>Choose two players to swap roles.</h1>
                 <form onSubmit={(e) => handleSwitch(e)} id="form1">
                     <div className={s.list}>
-                        {users.map((user) => {
-                            if(user.id === id) {
-                                return (
-                                    <div key={user.id} className={`${s.list__selection} ${s.flex}`}>
-                                        <label htmlFor={user.id} className={`${s.list__name} ${s.label}`}>You</label>
-                                        <input className={s.checkbox} id={user.id} name={user.id} type="checkbox" onChange={(e) => handleToggle(e)}/>
-                                    </div>
-                                ); 
-                            }
+                        {users.map((user, i) => {
+                            
                             return (
                                 <div key={user.id} className={`${s.list__selection} ${s.flex}`}>
-                                    <label htmlFor={user.id} className={`${s.list__name} ${s.label}`}>{user.name}</label>
+                                    <label htmlFor={user.id}><Player key={user.id} player={user} agent={i} vertical={true}/></label>
                                     <input className={s.checkbox} id={user.id} name={user.id} type="checkbox" onChange={(e) => handleToggle(e)}/>
                                 </div>
                             ); 
@@ -93,4 +93,26 @@ export function Action({ users, id, action }) {
             </div>
         ); 
     }
+
+    if(action === "vote") {
+        return (
+            <div>
+                <h1>Vote who you think the traitor is.</h1>
+                <div className={s.list}>
+                    {users.map((user, i) => {
+                        if(user.id === id) {
+                        return null;
+                        }
+                        return (
+                            <div key={user.id} className={s.list__selection}>
+                                <Player key={user.id} player={user} agent={i} vertical={true}/>
+                                <button className={`${s.btn} ${s.red}`} onClick={() => handleVote(user)}>Vote</button>
+                            </div>
+                        ); 
+                    })}
+                </div>
+            </div>
+        );
+    }
+
 }

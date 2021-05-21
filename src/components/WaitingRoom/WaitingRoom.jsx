@@ -25,12 +25,12 @@ export function WaitingRoom({ player, host, users }) {
             <div className={s.exit}>
                 <ExitButton/>
             </div>
-            {player ? <h1>Game Code: {host.room}</h1> : <p>Error, please restart the game! 😲</p>}
+            {player ? <h1>Game Code: <span className={s.code}>{host.room}</span></h1> : <p>Something went wrong, please restart the game! 😲</p>}
             <h2>Players ({users.length}/6)</h2>
             <div className={s.players}>
-                {users.map((user) => {
+                {users.map((user, i) => {
                     return (
-                        <Player key={user.id} player={user} vertical={true} />
+                        <Player key={user.id} player={user} vertical={true} agent={i} />
                     ) 
                 })}
             </div>

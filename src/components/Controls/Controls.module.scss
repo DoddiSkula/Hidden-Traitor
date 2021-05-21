@@ -1,20 +1,10 @@
 @import '../../Styles/Config.module.scss';
 
 .button {
-  background: $grey;
-  border-radius: 1rem;
-  border: none;
-  color: $white;
-  cursor: pointer;
-  font-size: 1.25rem;
-  margin: 1rem;
-  outline: none;
-  padding: 1rem;
-  position: relative;
-  width: 150px;
 
   &__spy {
     background: $red;
+    margin-right: 1rem;
   }
 
   &__spy:hover ~ .caption_spy {
@@ -23,6 +13,7 @@
 
   &__switch {
     background: $blue;
+    margin-right: 1rem;
   }
 
   &__switch:hover ~ .caption_switch {
@@ -44,6 +35,7 @@
   position: absolute;
   right: 0;
   text-align: center;
+  margin-top: 1rem;
 }
 
 .caption_switch {
@@ -52,6 +44,7 @@
   position: absolute;
   right: 0;
   text-align: center;
+  margin-top: 1rem;
 }
 
 .caption_confirm {
@@ -60,4 +53,5 @@
   position: absolute;
   right: 0;
   text-align: center;
+  margin-top: 1rem;
 }

@@ -11,7 +11,7 @@ export function Index() {
     return (
         <div>
             <Layout>
-                <Button link={'/join'} text={'Join game'}  color={'#61ca70'}/>
+                <Button link={'/join'} text={'Join game'} color={'#61ca70'}/>
                 <Button link={'/create'} text={'Create game'} color={'#f0b448'}/>
                 <button className={s.gameRules} onClick={() => toggleModal(true)}>Game Rules</button>
                 <Modal isOpen={isModalOpen} toggle={toggleModal}>
