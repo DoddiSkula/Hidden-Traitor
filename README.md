@@ -6,7 +6,7 @@ Live version available soon!
 
 The frontend (client-side) is made with [React](https://reactjs.org/) and Socket.IO.
 
-The backend (server-side) is made with [Express.js](https://expressjs.com/) and Socket.IO.
+The [backend](https://github.com/DoddiSkula/hidden-traitor-backend) (server-side) is made with [Express.js](https://expressjs.com/) and Socket.IO.
 
 ## Game Rules
 
