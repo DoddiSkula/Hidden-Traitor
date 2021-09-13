@@ -1,4 +1,4 @@
-import s from '../../styles/Game.module.scss';
+import s from '../../Styles/Game.module.scss';
 
 export function GameRules() {
     return (
