@@ -3,7 +3,7 @@ import { Layout } from '../components/layout/Layout';
 import { Button } from '../components/Button/Button';
 import { GameRules } from '../components/GameRules/GameRules';
 import Modal from "../components/Modal/Modal";
-import s from "../styles/Game.module.scss";
+import s from "../Styles/Game.module.scss";
 
 export function Index() {
     const [isModalOpen, toggleModal] = useState(false);
