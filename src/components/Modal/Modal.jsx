@@ -73,7 +73,7 @@ const Modal = styled(posed.div(modalPoses))`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: auto;
+  max-height: 75vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

@@ -38,7 +38,7 @@ export function WaitingRoom({ player, host, users }) {
                 {(() => {
                     if(player) {
                         <h1>Game Code: {host.room}</h1>
-                        if(player.id === host.id && users.length > 1) {
+                        if(player.id === host.id && users.length > 2 && users.length < 7) {
                             return <button onClick={handleStart}>Start Game</button>
                         } else {
                             return player.id !== host.id ? <p>Waiting for {host.name} to start the game.</p> : <p>Waiting for more players.</p>

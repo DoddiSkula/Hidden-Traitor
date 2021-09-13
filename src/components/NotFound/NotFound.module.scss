@@ -1,0 +1,25 @@
+@import '../../Styles/Config.module.scss';
+
+.background {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../images/404.png');
+  background-color: $dark-grey;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.btn {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    background-color: $red;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    text-decoration: none;
+}
+
+.btn:hover {
+  background-color: $green;
+}

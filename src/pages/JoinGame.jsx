@@ -5,7 +5,7 @@ import { Layout } from '../components/layout/Layout';
 export function JoinGame() {
     return (
         <Layout>
-            <Form buttonText={'Join'} buttonColor={"#61ca70"} />
+            <Form buttonText={'Join'} buttonColor={"#61ca70"} mode={"join"} />
             <Button link={'/'} text={'Back'} />
         </Layout>
     );
