@@ -4,7 +4,7 @@ import openSocket from 'socket.io-client';
 import dotenv from 'dotenv';
 import { GameRoom } from '../components/GameRoom/GameRoom';
 import Modal from '../components/Modal/Modal';
-import s from '../styles/Game.module.scss';
+import s from '../Styles/Game.module.scss';
 
 dotenv.config();
 
