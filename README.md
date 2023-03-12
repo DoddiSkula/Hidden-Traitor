@@ -2,8 +2,6 @@
 
 Hidden Traitor is a multiplayer deduction game where players try to find out who the traitor is. 
 
->Play the game [here](https://hidden-traitor.herokuapp.com/)
-
 The frontend (client-side) is made with [React](https://reactjs.org/) and Socket.IO.
 
 The [backend](https://github.com/DoddiSkula/hidden-traitor-backend) (server-side) is made with [Express.js](https://expressjs.com/) and Socket.IO.
